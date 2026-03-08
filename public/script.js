@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = await response.json();
 
             if (result.id) {
-                const baseUrl = 'http://192.168.1.100:3000';
+                const baseUrl = 'https://vcard-qr-app.vercel.app';
                 const qrUrl = `${baseUrl}/vcard/${result.id}`;
                 
                 qrContainer.innerHTML = '';

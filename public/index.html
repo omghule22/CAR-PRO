@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic vCard QR Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo"><i class="fas fa-qrcode"></i> vCardGen DB</div>
+    </nav>
+
+    <div class="main-container">
+        <div class="input-panel">
+            <h1>Create Dynamic vCard</h1>
+            <p>Save to database. Edit anytime without reprinting QR.</p>
+            
+            <form id="vcardForm">
+                <div class="form-section">
+                    <h3>Basic Info</h3>
+                    <input type="text" id="name" placeholder="Full Name" required>
+                    <input type="text" id="job_title" placeholder="Job Title">
+                    <input type="text" id="company" placeholder="Company">
+                </div>
+                <div class="form-section">
+                    <h3>Contact</h3>
+                    <input type="tel" id="phone" placeholder="Phone" required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="url" id="website" placeholder="Website">
+                </div>
+                <div class="form-section">
+                    <h3>Address & Social</h3>
+                    <textarea id="address" rows="2" placeholder="Address"></textarea>
+                    <input type="url" id="facebook" placeholder="Facebook URL">
+                </div>
+                <div class="form-section">
+                    <h3>Colors</h3>
+                    <div class="row">
+                        <input type="color" id="qr_color" value="#000000">
+                        <input type="color" id="bg_color" value="#ffffff">
+                    </div>
+                </div>
+                <button type="submit" class="btn-generate">Save & Generate QR</button>
+            </form>
+        </div>
+
+        <div class="preview-panel">
+            <div class="preview-header">
+                <h2>QR Code Preview</h2>
+                <div id="download-actions" style="display:none;">
+                    <button id="downloadPNG" class="btn-download">Download PNG</button>
+                </div>
+            </div>
+            <div class="qr-wrapper">
+                <div id="qrcode"></div>
+                <div id="placeholder" class="qr-placeholder-text">Save to see QR</div>
+            </div>
+            <div id="qr-link" style="margin-top:10px; font-size:0.8rem; color:#666;"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

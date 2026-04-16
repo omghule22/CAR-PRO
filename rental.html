@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rental</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background:white; /* Luxury themed background */
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      font-size: 3em;
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #FFD700;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      font-weight: bold;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+      gap: 20px;
+      padding: 40px;
+    }
+
+    /* Card Style */
+    .card {
+      background-color: rgb(0, 0, 0);
+      border-radius: 15px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border-top: 5px solid #000000;
+      
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgb(220, 171, 10);
+     
+      
+      
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 15px;
+      text-align: center;
+    }
+
+    /* Card Title Color */
+    .card h3 {
+      margin-top: 10px;
+      font-size: 1.5em;
+      color: #fafbfc;
+      font-weight: bold;
+    }
+
+    .card p {
+      font-size: 1em;
+      color: #f9f9f9;
+      margin-bottom: 15px;
+    }
+
+    /* Know More Button */
+    .card button {
+      background-color: #ede516;
+      color: rgb(0, 0, 0);
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .card button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .card {
+      animation: fadeIn 0.5s ease-in;
+    }
+    .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #e0d9d9;
+            color: rgb(0, 0, 0);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            animation: glowBorder 2s infinite;
+        }
+
+        .footer-logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #000000;
+            text-align: left;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .footer-links li {
+            display: inline-block;
+        }
+
+        .footer-links a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #f5a623;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .social-icons a {
+            font-size: 1.5em;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        /* Glowing border animation */
+        @keyframes glowBorder {
+            0% {
+                box-shadow: 0 0 10px #f5a623, 0 0 20px #f5a623, 0 0 30px #f5a623;
+            }
+            50% {
+                box-shadow: 0 0 20px #f5a623, 0 0 30px #f5a623, 0 0 40px #f5a623;
+            }
+            100% {
+                box-shadow: 0 0 10px #f5a623, 0 0 20px #f5a623, 0 0 30px #f5a623;
+            }
+        }
+
+        footer {
+            padding: 10px 0;
+            background-color: #000000;
+            text-align: center;
+            color: #c4b9b9;
+            margin-top: 20px;
+            position: relative;
+        }
+        .menu-toggle {
+                display: block;
+                font-size: 1.5rem;
+                color: #ffd700;
+                cursor: pointer;
+                animation: pulse 2s infinite;
+            }
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: slideInFromLeft 1s ease-out, pulse 2s infinite;
+            border: #000000;
+        }
+        .b{
+            color: #000000;
+        }
+        
+
+        footer p {
+            font-size: 0.9em;
+            margin-top: 15px;
+        }
+
+        /* Light border hover effect */
+        .footer-content:hover {
+            box-shadow: 0 0 15px 2px rgba(255, 255, 255, 0.6);
+            transition: box-shadow 0.3s ease;
+        }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+        <div class="logo">SELECT YOUR CAR</div>
+        <nav>
+            <div class="menu-toggle"></div>
+            <ul>
+               
+                <li><a href="index.html"  class="b">⬅ BACK</a></li>
+                    
+            </ul>
+        </nav>
+    </div>         
+</header>
+  <div class="card-container">
+    <!-- First Row -->
+    <div class="card">
+      <img src="Maruti Suzuki Baleno.jpeg" alt="Card 1 Image">
+      <div class="card-body">
+        <h3>Maruti Suzuki Swift</h3>
+        <p>SUV • Petrol.</p>
+        <button onclick="window.location.href='Maruti Suzuki Baleno.html'">Book now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="Hyundai creta.jpeg" alt="Card 2 Image">
+      <div class="card-body">
+        <h3>Hyundai Creta</h3>
+        <p>SUV • Petrol.</p>
+        <button onclick="window.location.href='Hyundai creta.html'">Book now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="nexon.jpeg" alt="Card 3 Image">
+      <div class="card-body">
+        <h3>Tata Nexon</h3>
+        <p>SUV • Diesel.</p>
+        <button onclick="window.location.href='nexon.html'">Book now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="Hyundai Venue.jpeg" alt="Card 4 Image">
+      <div class="card-body">
+        <h3>Hyundai Venue</h3>
+        <p>SUV • Petrol.</p>
+        <button onclick="window.location.href='Hyundai Venue.html'">Book now</button>
+      </div>
+    </div>
+
+    <!-- Second Row -->
+    <div class="card">
+      <img src="tatahar.jpeg" alt="Card 5 Image">
+      <div class="card-body">
+        <h3>Tata Harrier</h3>
+        <p>SUV • Diesel.</p>
+        <button onclick="window.location.href='tatahar.html'">Book now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="Mahindra Scorpio.jpeg" alt="Card 6 Image">
+      <div class="card-body">
+        <h3>Mahindra Scorpio</h3>
+        <p>Hatchback • Petrol.</p>
+        <button onclick="window.location.href='Mahindra Scorpio.html'">Book now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="Honda Amaze.jpeg" alt="Card 7 Image">
+      <div class="card-body">
+        <h3>Honda Amaze</h3>
+        <p>SUV • Diesel.</p>
+        <button onclick="window.location.href='Honda Amaze.html'">Book now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="Maruti Suzuki Dzire.jpeg" alt="Card 8 Image">
+      <div class="card-body">
+        <h3>Maruti Suzuki Dzire</h3>
+        <p>Sedan • Petrol.</p>
+        <button onclick="window.location.href='Maruti Suzuki Dzire.html'">Book now</button>
+      </div>
+    </div>
+
+    <!-- Third Row -->
+    <div class="card">
+      <img src="Hyundai i20.jpeg" alt="Card 9 Image">
+      <div class="card-body">
+        <h3>Hyundai i20</h3>
+        <p>Hatchback • Petrol.</p>
+        <button onclick="window.location.href='Hyundai i20.html'">Book now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="Tata Altroz.jpeg" alt="Card 10 Image">
+      <div class="card-body">
+        <h3>Tata Altroz</h3>
+        <p>Hatchback • Petrol</p>
+        <button onclick="window.location.href='Tata Altroz.html'">Book now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="Honda WR-V.jpeg" alt="Card 11 Image">
+      <div class="card-body">
+        <h3>Honda WR-V</h3>
+        <p>SUV • Petrol.</p>
+        <button onclick="window.location.href='Honda WR-V.html'">Book now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="Mahindra Thar.jpeg" alt="Card 12 Image">
+      <div class="card-body">
+        <h3>Mahindra Thar</h3>
+        <p>SUV • Diesel.</p>
+        <button onclick="window.location.href='Mahindra Thar.html'">Book now</button>
+      </div>
+    </div>
+
+    <!-- Fourth Row -->
+    <div class="card">
+      <img src="Maruti Suzuki Vitara Brezza.jpeg" alt="Card 13 Image">
+      <div class="card-body">
+        <h3>Maruti Suzuki Vitara Brezza</h3>
+        <p>SUV • Petrol.</p>
+        <button onclick="window.location.href='Maruti Suzuki Vitara Brezza.html'">Book now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="mahindra xuv.jpeg" alt="Card 14 Image">
+      <div class="card-body">
+        <h3>Mahindra XUV500</h3>
+        <p>SUV • Petrol.</p>
+        <button onclick="window.location.href='mahindra xuv500.html'">Book now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="honda city.jpg" alt="Card 15 Image">
+      <div class="card-body">
+        <h3>Honda City</h3>
+        <p>Sedan • Petrol.</p>
+        <button onclick="window.location.href='honda city.html'">Book now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="Maruti Suzuki Baleno.jpeg" alt="Card 16 Image">
+      <div class="card-body">
+        <h3>Maruti Suzuki Baleno</h3>
+        <p>Hatchback • Petrol.</p>
+        <button onclick="window.location.href='Maruti Suzuki Baleno.html'">Book now</button>
+      </div>
+
+    </div>
+  </div>
+  <footer>
+    <div class="container footer-content">
+        <div class="footer-logo">CARPRO</div>
+        <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="rental.html">RENTAL</a></li>
+            <li><a href="servicing.html">SERVICES</a></li>
+            <li><a href="help.html">HELP</a></li>
+        </ul>
+        <div class="social-icons">
+          
+    </div>
+    <p>&copy; thecarpro@gmail.com. All rights reserved.</p>
+</footer>
+  
+</body>
+</html>

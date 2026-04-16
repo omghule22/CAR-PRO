@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Car Servicing - Expert Care for Your Vehicle</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(26, 26, 26, 0.9);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: #f0f80b;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #b8b9b0;
+        }
+
+        /* Hero section styles */
+        .hero {
+            background-image: url('https://source.unsplash.com/1600x900/?car,service');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            margin-top: 60px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        /* Service types section styles */
+        .service-types {
+            padding: 4rem 0;
+            background-color: #f9f8f8;
+        }
+
+        .service-types h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ff6b6b;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Car selection section styles */
+        .car-selection {
+            padding: 4rem 0;
+            background-color: #f4f4f4;
+        }
+
+        .car-selection h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .car-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .car-filter select {
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .car-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .car-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .car-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .car-details {
+            padding: 1rem;
+        }
+
+        .car-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .car-info {
+            font-size: 0.9rem;
+            color: #756868;
+            margin-bottom: 1rem;
+        }
+
+        .service-button {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #ff6b6b;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .service-button:hover {
+            background-color: #ff4757;
+        }
+
+        /* Booking process section styles */
+        .booking-process {
+            padding: 4rem 0;
+            background-color: #fff;
+        }
+
+        .booking-process h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ff6b6b;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Testimonials section styles */
+        .testimonials {
+            padding: 4rem 0;
+            background-color: #f4f4f4;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 0 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+        }
+
+        /* Contact section styles */
+        .contact {
+            padding: 4rem 0;
+            background-color: #fff;
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 150px;
+        }
+
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background-color: #ff6b6b;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #ff4757;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .social-icons {
+            display: flex;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #ff6b6b;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease;
+        }
+
+        .animate-slide-in-left {
+            animation: slideInLeft 1s ease;
+        }
+
+        .animate-slide-in-right {
+            animation: slideInRight 1s ease;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .service-grid,
+            .car-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-step {
+                flex-basis: 100%;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo">car <span>pro</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                   
+                    <li><a href="#booking">Booking</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Expert Car Servicing for Indian Vehicles</h1>
+                <p>Trust our skilled technicians to keep your car in top condition</p>
+            </div>
+        </section>
+
+        <section id="services" class="service-types">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="service-grid">
+                    <div class="service-card animate-fade-in-up">
+                        <div class="service-icon">🔧</div>
+                        <h3 class="service-title">General Service</h3>
+                        <p class="service-description">Comprehensive check-up and maintenance for your vehicle</p>
+                    </div>
+                    <div class="service-card animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="service-icon">🛢️</div>
+                        <h3 class="service-title">Oil Change</h3>
+                        <p class="service-description">Keep your engine running smoothly with regular oil changes</p>
+                    </div>
+                    <div class="service-card animate-fade-in-up" style="animation-delay: 0.4s;">
+                        <div class="service-icon">🔋</div>
+                        <h3 class="service-title">Battery Service</h3>
+                        <p class="service-description">Check, charge, and replace your car battery if needed</p>
+                    </div>
+                    <div class="service-card animate-fade-in-up" style="animation-delay: 0.6s;">
+                        <div class="service-icon">🚗</div>
+                        <h3 class="service-title">AC Service</h3>
+                        <p class="service-description">Ensure your car's air conditioning system is working efficiently</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section id="booking" class="booking-process">
+            <div class="container">
+                <h2>Easy Booking Process</h2>
+                <div class="process-steps">
+                    <div class="process-step animate-slide-in-left">
+                        <div class="step-icon">1️⃣</div>
+                        <h3 class="step-title">Select Your Car</h3>
+                        <p class="step-description">Choose your car model from our extensive list</p>
+                    </div>
+                    <div class="process-step animate-slide-in-left" style="animation-delay: 0.2s;">
+                        <div class="step-icon">2️⃣</div>
+                        <h3 class="step-title">Choose Services</h3>
+                        <p class="step-description">Pick the services you need for your vehicle</p>
+                    </div>
+                    <div class="process-step animate-slide-in-left" style="animation-delay: 0.4s;">
+                        <div class="step-icon">3️⃣</div>
+                        <h3 class="step-title">Schedule Appointment</h3>
+                        <p class="step-description">Select a convenient date and time for your service</p>
+                    </div>
+                    <div class="process-step animate-slide-in-left" style="animation-delay: 0.6s;">
+                        <div class="step-icon">4️⃣</div>
+                        <h3 class="step-title">Confirm Booking</h3>
+                        <p class="step-description">Review and confirm your service booking</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <h2>What Our Customers Say</h2>
+                <div class="testimonial-slider">
+                    <div class="testimonial">
+                        <p class="testimonial-text">"Excellent service! They took great care of my Maruti Suzuki Swift and it's running better than ever."</p>
+                        <p class="testimonial-author">- sahil turkar</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+    
+                <div class="container">
+                    <h1>complete Your Booking</h2>
+                    <form class="contact-form" action="mailto:thecarpro123@gmail.com" method="post" enctype="text/plain">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone:</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Enter car name</label>
+                            <input type="text" id="enter car name" name="enter car name" required>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="service">choose service</label>
+                                <select id="Online" name="servicing type">
+                                    <option value="General service">General service</option>
+                                    <option value="oil change">oil change</option>
+                                    <option value="battary service">battary service</option>
+                                    <option value="AC service">AC service</option>
+                
+                            </select>
+                        </div>
+                       
+                            </select>
+                        </div>
+
+                       <button type="submit" class="submit-button">Send </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Indian Car Service is your trusted partner for all your car servicing needs. We provide top-quality service for a wide range of Indian car brands and models.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#cars">Cars</a></li>
+                        <li><a href="#booking">Booking</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>nagpur</p>
+                    <p>Phone: +91 8080785494</p>
+                    <p>Email:thecarpro@gmail.com</p>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script>
+        // Car data (100+ Indian cars)
+        const cars = [
+            
+            // Continue adding more cars...
+        ];
+
+        // Function to create a car card
+        function createCarCard(car) {
+            return `
+                <div class="car-card animate-fade-in-up">
+                    <img src="${car.image}" alt="${car.brand} ${car.model}" class="car-image">
+                    <div class="car-details">
+                        <h3 class="car-title">${car.brand} ${car.model}</h3>
+                        <p class="car-info">${car.type}</p>
+                        <a href="bookser.html" class="service-button">Book Service</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to render car grid
+        function renderCarGrid(carsToRender) {
+            const carGrid = document.querySelector('.car-grid');
+            carGrid.innerHTML = carsToRender.map(createCarCard).join('');
+        }
+
+        // Function to update model filter options
+        function updateModelFilter(brand) {
+            const modelFilter = document.getElementById('model-filter');
+            const models = brand ? cars.filter(car => car.brand === brand).map(car => car.model) : [];
+            const uniqueModels = [...new Set(models)];
+
+            modelFilter.innerHTML = `
+                <option value="">All Models</option>
+                ${uniqueModels.map(model => `<option value="${model}">${model}</option>`).join('')}
+            `;
+        }
+
+        // Event listeners for filters
+        document.getElementById('brand-filter').addEventListener('change', (e) => {
+            const selectedBrand = e.target.value;
+            updateModelFilter(selectedBrand);
+            const filteredCars = selectedBrand ? cars.filter(car => car.brand === selectedBrand) : cars;
+            renderCarGrid(filteredCars);
+        });
+
+        document.getElementById('model-filter').addEventListener('change', (e) => {
+            const selectedModel = e.target.value;
+            const filteredCars = selectedModel ? cars.filter(car => car.model === selectedModel) : cars;
+            renderCarGrid(filteredCars);
+        });
+
+        // Initial render
+        renderCarGrid(cars);
+
+        // Testimonial slider
+        const testimonials = [
+            {
+                text: "Excellent service! They took great care of my Maruti Suzuki Swift and it's running better than ever.",
+                author: "Rahul Sharma"
+            },
+            {
+                text: "I've been bringing my Hyundai Creta here for years. Their expertise and customer service are unmatched.",
+                author: "Priya Patel"
+            },
+            {
+                text: "The team at Indian Car Service is professional and efficient. My Tata Nexon is always in good hands.",
+                author: "Amit Singh"
+            }
+        ];
+
+        let currentTestimonialIndex = 0;
+        const testimonialElement = document.querySelector('.testimonial');
+
+        function updateTestimonial() {
+            const currentTestimonial = testimonials[currentTestimonialIndex];
+            testimonialElement.innerHTML = `
+                <p class="testimonial-text">"${currentTestimonial.text}"</p>
+                <p class="testimonial-author">- ${currentTestimonial.author}</p>
+            `;
+            currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
+        }
+
+        setInterval(updateTestimonial, 5000); // Change testimonial every 5 seconds
+
+        // Scroll animation
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-fade-in-up, .animate-slide-in-left, .animate-slide-in-right');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 50) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission (you would typically send this data to a server)
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message. We will get back to you soon!');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
